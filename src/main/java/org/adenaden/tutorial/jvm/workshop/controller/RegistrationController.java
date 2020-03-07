@@ -34,4 +34,9 @@ public class RegistrationController {
 		
 		return new ModelAndView("redirect:/confirmation", model);
 	}
+	@GetMapping("registration/verified")
+	public void emailTerverifikasi() {
+	
+	}
+	
 }
