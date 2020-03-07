@@ -9,7 +9,7 @@
 <body>
     <div layout:fragment="content">
         <h1>Registration</h1>
-        <form action="/#" th:action="@{/registration}" th:object="${registration}" method="POST" >
+        <form action="/#" th:action="@{/registration/form}" th:object="${registration}" method="POST" >
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" th:field="*{name}" ><br>
             <label for="email">Email:</label><br>

@@ -1,8 +1,8 @@
 package org.adenaden.tutorial.jvm.workshop.controller;
 
-import org.adenaden.tutorial.jvm.workshop.entity.Account;
-import org.adenaden.tutorial.jvm.workshop.model.Login;
-import org.adenaden.tutorial.jvm.workshop.service.AccountService;
+import org.adenaden.tutorial.jvm.workshop.entity.Member;
+import org.adenaden.tutorial.jvm.workshop.model.LoginDTO;
+import org.adenaden.tutorial.jvm.workshop.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,22 +15,22 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 	
 	@Autowired
-	private AccountService accountService;
+	private MemberService accountService;
 	
 	@GetMapping("/login")
 	public ModelAndView login() {
 		ModelMap model = new ModelMap();
-		model.addAttribute("login", new Login());
+		model.addAttribute("login", new LoginDTO());
 		
 		return new ModelAndView("login", model);
 	}
 	
 	@PostMapping("/login")
-	public ModelAndView login(@ModelAttribute Login login) {
-		Account account = accountService.findByEmailAndPassword(login.getEmail(), login.getPassword());
+	public ModelAndView login(@ModelAttribute LoginDTO login) {
+		Member member = accountService.findByEmailAndPassword(login.getEmail(), login.getPassword());
 		
 		ModelMap model =  new ModelMap();
-		model.addAttribute("email", account.getEmail());
+		model.addAttribute("email", member.getEmail());
 		
 		return new ModelAndView("redirect:/course-list", model);
 	}
