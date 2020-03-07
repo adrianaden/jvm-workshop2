@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
 
-    <form action="/#" th:action="@{/registration}" th:object="${registration}" method="POST" >
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" th:field="*{name}" ><br>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email" th:field="*{email}">
-        <input type="submit" value="Submit">
-    </form>
 </head>
 <body>
-
+    <div layout:fragment="content">
+        <h1>Registration</h1>
+        <form action="/#" th:action="@{/registration}" th:object="${registration}" method="POST" >
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" th:field="*{name}" ><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" th:field="*{email}">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Confirmation</title>
 </head>
 <body>
-    <h1>Confirmation</h1>
-    <p th:text="'name: ' + ${user.name}"/>
-    <p th:text="'email: ' + ${user.email}"/>
-    <p th:text="'email: ' + ${user.password}"/>
+    <div layout:fragment="content">
+        <h1>Confirmation</h1>
+        <p th:text="'name: ' + ${user.name}"/>
+        <p th:text="'email: ' + ${user.email}"/>
+        <p th:text="'email: ' + ${user.password}"/>
+    </div>
 </body>
 </html>
