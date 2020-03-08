@@ -50,6 +50,8 @@ public class CourseListController {
 	@PostMapping("/enroll")
 	public ModelAndView processEnrollment(@RequestParam Long id) {
 		
+		courseService.enroll(id);
+		
 		ModelMap model =  new ModelMap();
 		model.addAttribute("id", id);
 		
