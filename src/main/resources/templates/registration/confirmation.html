@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+    <title>Registration</title>
+</head>
+<body>
+    <form>
+        <h2>Thank you for registering!</h2>
+        <div>Please check your email at <span th:text="${user.email}" /> to get your password</div>
+
+        <br/>
+        <button class="btn btn-lg btn-secondary btn-block" onclick="onSignInClick()">Sign In</button>
+
+    </form>
+
+    <script>
+            function onSignInClick() {
+                window.location.href = '/login'
+            }
+    </script>
+</body>
+</html>

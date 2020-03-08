@@ -1,16 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+
+    <title>Sign In</title>
 </head>
-<body>
-    <form action="/#" th:action="@{/login}" th:object="${login}" method="POST" >
-        <label for="name">Email:</label><br>
-        <input type="text" id="email" name="email" th:field="*{email}" ><br>
-        <label for="email">Password:</label><br>
-        <input type="text" id="password" name="password" th:field="*{password}">
-        <input type="submit" value="Submit">
-    </form>
+
+<body class="text-center">
+<form class="form-signin" th:action="@{/login}" th:object="${login}" method="POST">
+    <img class="mb-4" src="https://www.pngfind.com/pngs/m/292-2924858_user-icon-business-man-flat-png-transparent-png.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Welcome Back</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus  th:field="*{email}">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required th:field="*{password}">
+    <br/>
+    <br/>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+    <button class="btn btn-lg btn-secondary btn-block" onclick="onRegisterClick()">Register Now</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020-Present</p>
+</form>
+
+
+<script>
+    function onRegisterClick() {
+        window.location.href = './registration/form'
+    }
+</script>
 </body>
 </html>
+

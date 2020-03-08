@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<html>
 <head>
     <meta charset="UTF-8">
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
     <title>Registration</title>
-
 </head>
 <body>
-    <div layout:fragment="content">
-        <h1>Registration</h1>
-        <form action="/#" th:action="@{/registration/form}" th:object="${registration}" method="POST" >
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" th:field="*{name}" ><br>
-            <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email" th:field="*{email}">
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+    <form th:action="@{/registration/form}" th:object="${registration}" method="POST">
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input class="form-control" id="inputName" placeholder="Your Name" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </body>
 </html>

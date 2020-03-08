@@ -22,6 +22,6 @@ public class ConfirmationController {
 		ModelMap model =  new ModelMap();
 		model.addAttribute("user", member);
 		
-		return new ModelAndView("confirmation", model);
+		return new ModelAndView("registration/confirmation", model);
 	}
 }

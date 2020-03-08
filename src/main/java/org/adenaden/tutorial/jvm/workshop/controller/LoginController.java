@@ -27,11 +27,11 @@ public class LoginController {
 	
 	@PostMapping("/login")
 	public ModelAndView login(@ModelAttribute LoginDTO login) {
-		Member member = accountService.findByEmailAndPassword(login.getEmail(), login.getPassword());
+		Member member = accountService.findByEmail(login.getEmail());
 		
 		ModelMap model =  new ModelMap();
 		model.addAttribute("email", member.getEmail());
 		
-		return new ModelAndView("redirect:/course-list", model);
+		return new ModelAndView("redirect:/course/list", model);
 	}
 }

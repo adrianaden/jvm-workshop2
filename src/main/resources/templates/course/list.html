@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
+
     <meta charset="UTF-8">
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+
     <title>Daftar Workshop</title>
 </head>
 <body>
 <div layout:fragment="content">
     <h1>Daftar Workshop</h1>
 
-    <table>
+    <table class="table">
         <thead>
-        <tr>
-            <th>Kode</th>
-            <th>Nama</th>
-            <th>Harga</th>
-            <th>&nbsp;</th>
-        </tr>
+            <tr>
+                <th>Kode</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>&nbsp;</th>
+            </tr>
         </thead>
         <tbody>
-
-        <tr th:each="m : ${courses}">
-            <td th:text="${m.code}" />
-            <td th:text="${m.name}" />
-            <td th:text="${m.price}" />
-            <td>
-                <a th:href="@{enroll(id=${m.id})}">daftar</a>
-            </td>
-        </tr>
-
+            <tr th:each="m : ${courses}">
+                <td th:text="${m.code}" />
+                <td th:text="${m.name}" />
+                <td th:text="${m.price}" />
+                <td>
+                    <a th:href="@{enroll(id=${m.id})}">daftar</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 
