@@ -21,11 +21,11 @@
         <tbody>
 
         <tr th:each="m : ${courses}">
-            <td th:text="${m.code}">M-001</td>
-            <td th:text="${m.name}">Materi 001</td>
-            <td th:text="${m.price}">Rp. 100000</td>
+            <td th:text="${m.code}" />
+            <td th:text="${m.name}" />
+            <td th:text="${m.price}" />
             <td>
-                <a th:href="@{enroll(materi=${m.id})}">daftar</a>
+                <a th:href="@{enroll(id=${m.id})}">daftar</a>
             </td>
         </tr>
 
