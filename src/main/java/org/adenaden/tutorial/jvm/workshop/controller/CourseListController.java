@@ -3,7 +3,9 @@ package org.adenaden.tutorial.jvm.workshop.controller;
 import org.adenaden.tutorial.jvm.workshop.entity.Course;
 import org.adenaden.tutorial.jvm.workshop.model.RegistrationDTO;
 import org.adenaden.tutorial.jvm.workshop.service.CourseService;
+import org.adenaden.tutorial.jvm.workshop.service.DokuService;
 import org.adenaden.tutorial.jvm.workshop.service.MemberService;
+import org.adenaden.tutorial.jvm.workshop.service.request.DokuHostedRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -24,6 +27,9 @@ public class CourseListController {
 	
 	@Autowired
 	private CourseService courseService;
+	
+	@Autowired
+	DokuService dokuService;
 	
 	@GetMapping("list")
 	public ModelAndView list() {
@@ -48,14 +54,15 @@ public class CourseListController {
 	}
 	
 	@PostMapping("/enroll")
-	public ModelAndView processEnrollment(@RequestParam Long id) {
+	public String processEnrollment(@RequestParam Long id, RedirectAttributes redir) {
 		
-		courseService.enroll(id);
+		DokuHostedRequestDTO dokuRequest = courseService.enroll(id);
 		
 		ModelMap model =  new ModelMap();
-		model.addAttribute("id", id);
+		redir.addFlashAttribute("dokuUrl", dokuService.getDokuUrl()+"Receive");
+		redir.addFlashAttribute("redirect", dokuRequest);
 		
-		return new ModelAndView("redirect:enrollment_confirmation", model);
+		return "redirect:/doku/continue";
 	}
 	
 	@GetMapping("/enrollment_confirmation")

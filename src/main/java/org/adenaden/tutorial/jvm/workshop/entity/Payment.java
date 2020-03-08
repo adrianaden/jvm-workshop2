@@ -27,5 +27,7 @@ public class Payment {
 	@NotEmpty
 	private String reference;
 	
+	private String dokuResponseCode;
+	
 	
 }
