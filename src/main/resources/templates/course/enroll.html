@@ -8,12 +8,12 @@
 <body>
 <div layout:fragment="content">
     <h1>Pendaftaran Workshop</h1>
-    <form>
+    <form th:action="@{/course/enroll(id=${course.id})}" method="POST">
         Anda akan mendaftar untuk workshop :
 
         <ul>
-            <li th:text="'Kode: ' + ${course.code}" />
-            <li th:text="'Nama: ' + ${course.name}" />
+            <li th:text="'Kode: ' + *{course.code}" />
+            <li th:text="'Nama: ' + *{course.name}" />
         </ul>
 
         <input type="submit" value="Daftar">

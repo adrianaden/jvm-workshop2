@@ -37,7 +37,7 @@ public class CourseListController {
 	}
 	
 	@GetMapping("/enroll")
-	public ModelAndView displayEnrollmentConfirmation(@RequestParam Long id) {
+	public ModelAndView displayEnroll(@RequestParam Long id) {
 		
 		Course course = courseService.findById(id);
 		
@@ -48,12 +48,21 @@ public class CourseListController {
 	}
 	
 	@PostMapping("/enroll")
-	public String processEnrollment() {
-		return "redirect:enrollment_confirmation";
+	public ModelAndView processEnrollment(@RequestParam Long id) {
+		
+		ModelMap model =  new ModelMap();
+		model.addAttribute("id", id);
+		
+		return new ModelAndView("redirect:enrollment_confirmation", model);
 	}
 	
 	@GetMapping("/enrollment_confirmation")
-	public ModelMap displayEnrollmentConfirmation() {
-		return new ModelMap();
+	public ModelAndView displayEnrollmentConfirmation(@RequestParam Long id) {
+		
+		Course course = courseService.findById(id);
+		ModelMap model =  new ModelMap();
+		model.addAttribute("course", course);
+		
+		return new ModelAndView("course/enrollment_confirmation", model);
 	}
 }
